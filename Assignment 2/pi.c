@@ -18,7 +18,7 @@ int main()
 #pragma omp parallel
         {
             unsigned int thread_seed = (unsigned int)time(NULL) ^ omp_get_thread_num();
-            srand(thread_seed); // Seed the random number generator
+            srand(thread_seed);
             int local_hits = 0;
 
 #pragma omp for
@@ -36,7 +36,6 @@ int main()
 
         pi_estimate = 4.0 * (double)total_count / (double)iterations;
         double finish_time = omp_get_wtime();
-        // printf("Calculated Pi: %f\n", pi_estimate);
         printf("%f seconds for %d threads\n", finish_time - begin_time, threads);
 
         threads /= 2;
@@ -45,7 +44,7 @@ int main()
     double serial_begin = omp_get_wtime();
     int serial_count = 0;
     unsigned int serial_seed = (unsigned int)time(NULL);
-    srand(serial_seed); // Seed the random number generator
+    srand(serial_seed);
 
     for (int serial_iter = 0; serial_iter < iterations; serial_iter++)
     {

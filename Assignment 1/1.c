@@ -3,7 +3,7 @@
 
 int main(void)
 {
-    int num_threads = 0;
+    int num_threads = 30;
 
     printf("Enter the number of threads: ");
     scanf("%d", &num_threads);
